@@ -6,10 +6,10 @@
       "title": "nasdaq - Google Search",
       "selectors": [
         {
-          "name": "nasd",
+          "variable_name": "nasd",
           "selectorType": "css-path",
-          "selector": "#knowledge-finance-wholepage__entity-summary > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(10)",
-          "elementDescription": "<span> \"26,343.97\""
+          "selector": "#knowledge-finance-wholepage__entity-summary > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(10)",          
+          "display_name": "NASDAQ"
         }
       ]
     },
@@ -19,10 +19,10 @@
       "title": "TMG - Fon Detayları ve Analizi - TEFAS | TEFAS",
       "selectors": [
         {
-          "name": "tmg",
+          "variable_name": "tmg",
           "selectorType": "css-path",
           "selector": "#main-content > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > p:nth-of-type(1)",
-          "elementDescription": "<p> \"1,34792\""
+          "display_name": "TMG Fonu"
         }
       ]
     },
@@ -32,10 +32,10 @@
       "title": "Anlık Altın Fiyatları",
       "selectors": [
         {
-          "name": "kcgram",
+          "variable_name": "gramaltin",
           "selectorType": "css-path",
           "selector": "#content > div:nth-of-type(1) > div:nth-of-type(2) > table:nth-of-type(2) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > div:nth-of-type(1)",
-          "elementDescription": "<div> \"6,699.00\""
+          "display_name": "Gram Altin"
         }
       ]
     }
