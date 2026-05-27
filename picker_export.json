@@ -1,1 +1,49 @@
-{"pages":[]}
+{
+  "pages": [
+    {
+      "id": 12,
+      "url": "https:\/\/anlikaltinfiyatlari.com\/",
+      "title": "Anlık Altın Fiyatları",
+      "selectors": [
+        {
+          "variable_name": "kcgram",
+          "selectorType": "css-path",
+          "selector": "#content > div:nth-of-type(1) > div:nth-of-type(2) > table:nth-of-type(2) > tbody:nth-of-type(1) > tr:nth-of-type(2) > td:nth-of-type(2) > div:nth-of-type(1)",
+          "display_name": "<div> \"6,699.00\""
+        },
+        {
+          "variable_name": "zz",
+          "selectorType": "id",
+          "selector": "#satisCEYREK",
+          "display_name": "zart"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "url": "https:\/\/www.tefas.gov.tr\/tr\/fon-detayli-analiz\/TMG",
+      "title": "TMG - Fon Detayları ve Analizi - TEFAS | TEFAS",
+      "selectors": [
+        {
+          "variable_name": "tmg",
+          "selectorType": "css-path",
+          "selector": "#main-content > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > p:nth-of-type(1)",
+          "display_name": "<p> \"1,34792\""
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "url": "https:\/\/www.google.com\/search?q=nasdaq&sca_esv=317ac58a646953f7&source=hp&ei=mjMUapncB6H80PEPxo-Y-QI&biw=384&bih=572&oq=&gs_lp=EhFtb2JpbGUtZ3dzLXdpei1ocCIAKgIIATICECkyAhApMgIQKUiOD1AAWABwAXgAkAEAmAEAoAEAqgEAuAEByAEAmAIBoAIMqAIDmAMM8QXNGCItRDZxvpIHATGgBwCyBwC4BwDCBwMzLTHIBwuACAA&sclient=mobile-gws-wiz-hp",
+      "title": "nasdaq - Google Search",
+      "selectors": [
+        {
+          "variable_name": "nasd",
+          "selectorType": "css-path",
+          "selector": "#knowledge-finance-wholepage__entity-summary > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(1) > span:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(10)",
+          "display_name": "<span> \"26,343.97\""
+        }
+      ]
+    }
+  ]
+}
