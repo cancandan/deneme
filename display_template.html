@@ -9,12 +9,40 @@
 <div id="app"></div>
 
 <script>
+function parseNumber(s) {
+  return parseFloat(String(s).replace(/,/g, ''));
+}
+
+function sum(arr) {
+  return arr.reduce(function (a, b) { return a + (parseNumber(b) || 0); }, 0);
+}
+
+function avg(arr) {
+  if (!arr.length) return 0;
+  return sum(arr) / arr.length;
+}
+
+function mult(arr) {
+  return arr.reduce(function (a, b) { return a * (parseNumber(b) || 1); }, 1);
+}
+
+function formatValue(raw) {
+  var v = String(raw);
+  if (!v) return '-';
+  var num = parseNumber(v);
+  if (isNaN(num)) return v;
+  var clean = v.replace(/,/g, '');
+  var parts = clean.split('.');
+  if (parts.length === 1) return Math.round(num).toLocaleString();
+  return num.toFixed(Math.min(parts[1].length, 6));
+}
+
 function render(data) {
   var html = '<table><thead><tr><th>Name</th><th>Value</th></tr></thead><tbody>';
   for (var p = 0; p < data.length; p++) {
     for (var e = 0; e < data[p].entries.length; e++) {
       var entry = data[p].entries[e];
-      html += '<tr><td>' + escapeHtml(entry.display_name || entry.variable_name) + '</td><td class="value">' + escapeHtml(entry.value) + '</td></tr>';
+      html += '<tr><td>' + escapeHtml(entry.display_name || entry.variable_name) + '</td><td class="value">' + escapeHtml(formatValue(entry.value)) + '</td></tr>';
     }
   }
   html += '</tbody></table>';
