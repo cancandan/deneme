@@ -9,40 +9,63 @@
 <div id="app"></div>
 
 <script>
-function parseNumber(s) {
-  return parseFloat(String(s).replace(/,/g, ''));
+function detectLocale(values) {
+  var trCount = 0, usCount = 0;
+  for (var i = 0; i < values.length; i++) {
+    var v = String(values[i]);
+    if (v.indexOf('.') !== -1 && v.indexOf(',') !== -1) {
+      if (v.lastIndexOf(',') > v.lastIndexOf('.')) trCount++;
+      else usCount++;
+    }
+  }
+  return trCount > usCount ? 'tr' : 'us';
 }
 
-function sum(arr) {
-  return arr.reduce(function (a, b) { return a + (parseNumber(b) || 0); }, 0);
+function parseNumber(s, locale) {
+  var v = String(s).trim();
+  if (!v) return NaN;
+  if (locale === 'tr') {
+    v = v.replace(/\./g, '').replace(',', '.');
+  } else {
+    v = v.replace(/,/g, '');
+  }
+  return parseFloat(v);
 }
 
-function avg(arr) {
+function sum(arr, locale) {
+  return arr.reduce(function (a, b) { return a + (parseNumber(b, locale) || 0); }, 0);
+}
+
+function avg(arr, locale) {
   if (!arr.length) return 0;
-  return sum(arr) / arr.length;
+  return sum(arr, locale) / arr.length;
 }
 
-function mult(arr) {
-  return arr.reduce(function (a, b) { return a * (parseNumber(b) || 1); }, 1);
+function mult(arr, locale) {
+  return arr.reduce(function (a, b) { return a * (parseNumber(b, locale) || 1); }, 1);
 }
 
-function formatValue(raw) {
+function formatValue(raw, locale) {
   var v = String(raw);
   if (!v) return '-';
-  var num = parseNumber(v);
+  var num = parseNumber(v, locale);
   if (isNaN(num)) return v;
-  var clean = v.replace(/,/g, '');
+  var clean = v;
+  if (locale === 'tr') { clean = clean.replace(/\./g, '').replace(',', '.'); }
+  else { clean = clean.replace(/,/g, ''); }
   var parts = clean.split('.');
-  if (parts.length === 1) return Math.round(num).toLocaleString();
+  if (parts.length === 1) return Math.round(num).toLocaleString('en-US');
   return num.toFixed(Math.min(parts[1].length, 6));
 }
 
 function render(data) {
   var html = '<table><thead><tr><th>Name</th><th>Value</th></tr></thead><tbody>';
   for (var p = 0; p < data.length; p++) {
+    var values = data[p].entries.map(function(e) { return e.value; });
+    var locale = detectLocale(values);
     for (var e = 0; e < data[p].entries.length; e++) {
       var entry = data[p].entries[e];
-      html += '<tr><td>' + escapeHtml(entry.display_name || entry.variable_name) + '</td><td class="value">' + escapeHtml(formatValue(entry.value)) + '</td></tr>';
+      html += '<tr><td>' + escapeHtml(entry.display_name || entry.variable_name) + '</td><td class="value">' + escapeHtml(formatValue(entry.value, locale)) + '</td></tr>';
     }
   }
   html += '</tbody></table>';
