@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Display</title>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+function render(data) {
+  var html = '<table><thead><tr><th>Name</th><th>Value</th></tr></thead><tbody>';
+  for (var p = 0; p < data.length; p++) {
+    for (var e = 0; e < data[p].entries.length; e++) {
+      var entry = data[p].entries[e];
+      html += '<tr><td>' + escapeHtml(entry.display_name || entry.variable_name) + '</td><td class="value">' + escapeHtml(entry.value) + '</td></tr>';
+    }
+  }
+  html += '</tbody></table>';
+  document.getElementById('app').innerHTML = html;
+}
+
+function escapeHtml(s) {
+  var d = document.createElement('div');
+  d.appendChild(document.createTextNode(s));
+  return d.innerHTML;
+}
+</script>
+</body>
+</html>
