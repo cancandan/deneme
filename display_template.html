@@ -54,8 +54,11 @@ function formatValue(raw, locale) {
   if (locale === 'tr') { clean = clean.replace(/\./g, '').replace(',', '.'); }
   else { clean = clean.replace(/,/g, ''); }
   var parts = clean.split('.');
-  if (parts.length === 1) return Math.round(num).toLocaleString('en-US');
-  return num.toFixed(Math.min(parts[1].length, 6));
+  var decimals = parts.length > 1 ? Math.min(parts[1].length, 6) : 0;
+  return num.toLocaleString('en-US', {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals
+  });
 }
 
 function render(data) {
