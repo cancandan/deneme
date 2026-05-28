@@ -1,3 +1,56 @@
 {
-  "pages": []
+  "pages": [
+    {
+      "id": 7,
+      "url": "https:\/\/m.doviz.com\/altin\/isbankasi\/gram-altin",
+      "title": "İş Bankası İş Bankası Gram Altın Fiyatı",
+      "selectors": [
+        {
+          "variable_name": "isbank_altin",
+          "selectorType": "css-path",
+          "selector": "body > div:nth-of-type(2).container > div:nth-of-type(2).card.currency > div:nth-of-type(1).card-body > div:nth-of-type(1).detail > div:nth-of-type(2).buy-sell > div:nth-of-type(2).item > span:nth-of-type(2).value.small > span:nth-of-type(1)",
+          "display_name": "isbank_altin"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "url": "https:\/\/www.tefas.gov.tr\/tr\/fon-detayli-analiz\/TMG",
+      "title": "TMG - Fon Detayları ve Analizi - TEFAS | TEFAS",
+      "selectors": [
+        {
+          "variable_name": "tmg",
+          "selectorType": "css-path",
+          "selector": "#main-content > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > p:nth-of-type(1)",
+          "display_name": "tmg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "url": "https:\/\/www.binance.tr\/en\/trade\/BTC_TRY",
+      "title": "3,389,805 ｜ BTCTRY | Spot",
+      "selectors": [
+        {
+          "variable_name": "btc",
+          "selectorType": "class",
+          "selector": "div.showPrice",
+          "display_name": "btc"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "url": "https:\/\/www.nadirdoviz.com\/",
+      "title": "Nadir Döviz - Kapalıçarşı Altın, Gümüş, Eski Ziynet, Yeni Ziynet ve Döviz Fiyatları.",
+      "selectors": [
+        {
+          "variable_name": "nadir",
+          "selectorType": "css-path",
+          "selector": "#top > main:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
+          "display_name": "nadir"
+        }
+      ]
+    }
+  ]
 }
