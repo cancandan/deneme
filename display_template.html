@@ -18,7 +18,16 @@ function detectLocale(values) {
       else usCount++;
     }
   }
-  return trCount > usCount ? 'tr' : 'us';
+  if (trCount > usCount) return 'tr';
+  if (usCount > trCount) return 'us';
+  for (var i = 0; i < values.length; i++) {
+    var v = String(values[i]);
+    if (v.indexOf(',') !== -1 && v.indexOf('.') === -1) {
+      var last = v.split(',').pop();
+      if (last.length !== 3) return 'tr';
+    }
+  }
+  return 'us';
 }
 
 function parseNumber(s, locale) {
