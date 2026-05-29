@@ -6,10 +6,10 @@
       "title": "İş Bankası İş Bankası Gram Altın Fiyatı",
       "selectors": [
         {
-          "variable_name": "isbank_altin",
+          "variable_name": "ALTIN GR ISBANK",
           "selectorType": "css-path",
           "selector": "body > div:nth-of-type(2).container > div:nth-of-type(2).card.currency > div:nth-of-type(1).card-body > div:nth-of-type(1).detail > div:nth-of-type(2).buy-sell > div:nth-of-type(2).item > span:nth-of-type(2).value.small > span:nth-of-type(1)",
-          "display_name": "isbank_altin"
+          "display_name": "ALTIN GR ISBANK"
         }
       ]
     },
@@ -19,10 +19,10 @@
       "title": "TMG - Fon Detayları ve Analizi - TEFAS | TEFAS",
       "selectors": [
         {
-          "variable_name": "tmg",
+          "variable_name": "TMG Fonu",
           "selectorType": "css-path",
           "selector": "#main-content > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > p:nth-of-type(1)",
-          "display_name": "tmg"
+          "display_name": "TMG Fonu"
         }
       ]
     },
@@ -32,10 +32,10 @@
       "title": "3,389,805 ｜ BTCTRY | Spot",
       "selectors": [
         {
-          "variable_name": "btc",
+          "variable_name": "BITCOIN",
           "selectorType": "class",
           "selector": "div.showPrice",
-          "display_name": "btc"
+          "display_name": "BITCOIN"
         }
       ]
     },
@@ -45,10 +45,10 @@
       "title": "Nadir Döviz - Kapalıçarşı Altın, Gümüş, Eski Ziynet, Yeni Ziynet ve Döviz Fiyatları.",
       "selectors": [
         {
-          "variable_name": "nadir",
+          "variable_name": "ALTIN NADIR",
           "selectorType": "css-path",
           "selector": "#top > main:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1)",
-          "display_name": "nadir"
+          "display_name": "ALTIN NADIR"
         }
       ]
     }
