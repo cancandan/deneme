@@ -1,94 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Display</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <link rel="stylesheet" type="text/css" href="jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="responsive.dataTables.min.css">
+    <style>
+        body { margin: 0; padding: 4px; background: #111; color: #eee; }
+        table { width: 100% !important; }
+        td, th { font-size: 24px; padding: 6px 4px !important; }
+        .dataTable { margin: 0 !important; border: none !important; }
+        .dataTables_wrapper { padding: 0; }
+        thead th { background: #222 !important; color: #e94560 !important; border-bottom: 2px solid #e94560 !important; }
+        tbody td { border-bottom: 1px solid #333 !important; }
+        table.dataTable > tbody > tr.child { background: #1a1a2e; }
+        table.dataTable > tbody > tr.child ul { margin: 0; padding: 4px 8px; list-style: none; }
+        table.dataTable > tbody > tr.child ul.dtr-details > li { padding: 4px 0; border-bottom: 1px solid #2a2a4e; display: flex; justify-content: space-between; }
+        table.dataTable > tbody > tr.child ul.dtr-details > li:last-child { border-bottom: none; }
+        table.dataTable > tbody > tr.child ul.dtr-details > li span.dtr-title { font-size: 20px; color: #aaa; white-space: nowrap; }
+        table.dataTable > tbody > tr.child ul.dtr-details > li span.dtr-data { font-size: 20px; color: #eee; text-align: right; flex: 1; padding-left: 12px; }
+        table.dataTable > tbody > tr.parent td { border-bottom: 2px solid #e94560 !important; }
+        td.control { width: 32px; text-align: center !important; cursor: pointer; color: #e94560; font-size: 24px; font-weight: bold; }
+        td.control::before { content: '+'; }
+        tr.shown td.control::before { content: '−'; }
+        span.dtr-control { color: #e94560; font-size: 24px; font-weight: bold; padding: 0 8px 0 0; }
+    </style>
 </head>
 <body>
-<div id="app"></div>
+    <table id="myTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th data-priority="1">KIYMET</th>
+                <th data-priority="10000">ALIS TARIHI</th>
+                <th data-priority="10000">ALIS MEBLAG</th>
+                <th data-priority="10000">ESKI $ KUR</th>
+                <th data-priority="10000">ESKI $ DEGERI</th>
+                <th data-priority="10000">ALIS FIYAT</th>
+                <th data-priority="10000">SON FIYAT</th>
+                <th data-priority="10001">SIMDIKI $ DEGERI</th>
+                <th data-priority="2">$ GETIRI</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TMG Fonu</td>
+                <td>2024-02-24</td>
+                <td>309,557 TL</td>
+                <td>30.998133</td>
+                <td></td>
+                <td>0.595303 TL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>BITCOIN</td>
+                <td>2025-01-14</td>
+                <td>35,135 TL</td>
+                <td>35.47865</td>
+                <td></td>
+                <td>3,421,145 TL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>XRP</td>
+                <td>2025-01-16</td>
+                <td>35,060 TL</td>
+                <td>35.442015</td>
+                <td></td>
+                <td>112.37221154 TL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ALTIN GR ISBANK</td>
+                <td>2025-02-25</td>
+                <td>45.9 GR</td>
+                <td>36.455308</td>
+                <td></td>
+                <td>3,267.90 TL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ALTIN GR</td>
+                <td>2025-02-27</td>
+                <td>576 GR</td>
+                <td>36.443883</td>
+                <td></td>
+                <td>3,470 TL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ALTIN GR</td>
+                <td>2025-02-26</td>
+                <td>382 GR</td>
+                <td>36.458502</td>
+                <td></td>
+                <td>3,510 TL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>ALTIN GR</td>
+                <td>2025-01-24</td>
+                <td>22 GR</td>
+                <td>36.458502</td>
+                <td></td>
+                <td>3,240 TL</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 
-<script>
-function detectLocale(values) {
-  var trCount = 0, usCount = 0;
-  for (var i = 0; i < values.length; i++) {
-    var v = String(values[i]);
-    if (v.indexOf('.') !== -1 && v.indexOf(',') !== -1) {
-      if (v.lastIndexOf(',') > v.lastIndexOf('.')) trCount++;
-      else usCount++;
-    }
-  }
-  if (trCount > usCount) return 'tr';
-  if (usCount > trCount) return 'us';
-  for (var i = 0; i < values.length; i++) {
-    var v = String(values[i]);
-    if (v.indexOf(',') !== -1 && v.indexOf('.') === -1) {
-      var last = v.split(',').pop();
-      if (last.length !== 3) return 'tr';
-    }
-  }
-  return 'us';
-}
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="jquery.dataTables.min.js"></script>
+    <script src="responsive.dataTables.min.js"></script>
+    <script>
+        var table;
 
-function parseNumber(s, locale) {
-  var v = String(s).trim();
-  if (!v) return NaN;
-  if (locale === 'tr') {
-    v = v.replace(/\./g, '').replace(',', '.');
-  } else {
-    v = v.replace(/,/g, '');
-  }
-  return parseFloat(v);
-}
+        function render(data) {
+            for (var p = 0; p < data.length; p++) {
+                for (var e = 0; e < data[p].entries.length; e++) {
+                    var entry = data[p].entries[e];
+                    if (!entry.value) continue;
+                    var trs = document.querySelectorAll('#myTable tbody tr');
+                    for (var t = 0; t < trs.length; t++) {
+                        if (trs[t].cells[0].textContent.trim() === entry.variable_name) {
+                            trs[t].cells[6].textContent = entry.value;
+                        }
+                    }
+                }
+            }
+            if (table) table.rows().invalidate().draw();
+        }
 
-function sum(arr, locale) {
-  return arr.reduce(function (a, b) { return a + (parseNumber(b, locale) || 0); }, 0);
-}
+        $(document).ready(function() {
+            table = $('#myTable').DataTable({
+                responsive: {
+                    details: {
+                        display: DataTable.Responsive.display.childRow
+                    }
+                },
+                columnDefs: [
+                    { "type": "num-fmt", "targets": [7] },
+                    { className: 'dt-left', targets: 0 },
+                    { className: 'dt-right', targets: [1,2,3,4,5,6,7,8] },
+                    { 'orderable': false, 'targets': [0,1,2,3,4,5,6,8] }
+                ],
+                order: [
+                    [7, 'desc']
+                ],
+                paging: false,
+                searching: false,
+                info: false,
+                initComplete: function() { cleanupChildRows(); }
+            });
 
-function avg(arr, locale) {
-  if (!arr.length) return 0;
-  return sum(arr, locale) / arr.length;
-}
+            function cleanupChildRows() {
+                $('#myTable tbody tr.child ul.dtr-details li').each(function() {
+                    var dataEl = $(this).find('span.dtr-data');
+                    if (dataEl.text().trim() === '') $(this).remove();
+                });
+            }
 
-function mult(arr, locale) {
-  return arr.reduce(function (a, b) { return a * (parseNumber(b, locale) || 1); }, 1);
-}
+            table.on('responsive-display.dt', cleanupChildRows);
 
-function formatValue(raw, locale) {
-  var v = String(raw);
-  if (!v) return '-';
-  var num = parseNumber(v, locale);
-  if (isNaN(num)) return v;
-  var clean = v;
-  if (locale === 'tr') { clean = clean.replace(/\./g, '').replace(',', '.'); }
-  else { clean = clean.replace(/,/g, ''); }
-  var parts = clean.split('.');
-  var decimals = parts.length > 1 ? Math.min(parts[1].length, 6) : 0;
-  return num.toLocaleString('en-US', {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals
-  });
-}
-
-function render(data) {
-  var html = '<table><thead><tr><th>Name</th><th>Value</th></tr></thead><tbody>';
-  for (var p = 0; p < data.length; p++) {
-    var values = data[p].entries.map(function(e) { return e.value; });
-    var locale = detectLocale(values);
-    for (var e = 0; e < data[p].entries.length; e++) {
-      var entry = data[p].entries[e];
-      html += '<tr><td>' + escapeHtml(entry.display_name || entry.variable_name) + '</td><td class="value">' + escapeHtml(formatValue(entry.value, locale)) + '</td></tr>';
-    }
-  }
-  html += '</tbody></table>';
-  document.getElementById('app').innerHTML = html;
-}
-
-function escapeHtml(s) {
-  var d = document.createElement('div');
-  d.appendChild(document.createTextNode(s));
-  return d.innerHTML;
-}
-</script>
+            $('#myTable tbody').on('click', 'tr td', function(e) {
+                var $ctrl = $(this).closest('tr').find('span.dtr-control, td.control');
+                if (!$ctrl.length) return;
+                if ($(e.target).closest('span.dtr-control, td.control').length) return;
+                $ctrl.trigger('click');
+            });
+        });
+    </script>
 </body>
 </html>
